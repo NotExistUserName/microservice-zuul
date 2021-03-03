@@ -1,0 +1,28 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: microservice-zuul
+eureka:
+  client:
+    #eureka服务地址
+    service-url:
+      defaultZone: http://10.150.123.118:8080/eureka/
+    #将服务注册到注册中心eureka上,提供服务发现
+    register-with-eureka: true
+    #需要从注册中心获取应用实例
+    fetch-registry: true
+#健康检查相关配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - prometheus
+  endpoint:
+    health:
+      show-details: never
+    prometheus:
+      enabled: true
